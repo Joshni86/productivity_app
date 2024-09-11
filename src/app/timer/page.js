@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef, useEffect, ChangeEvent } from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "../../../components/ui/input";
+import { Button } from "../../../components/ui/button";
 
 export default function Timer() {
   const [time, setTime] = useState(""); // time as a string initially
