@@ -1,16 +1,37 @@
-import { getSession } from "@auth0/nextjs-auth0";
-const ProfileServer = () => {
-  const session = await.getSession();
-  const user = session?.user;
-  if (!user) {
-    return null;
-  }
+"use client";
 
-  return user ? (
+import React, { useEffect, useState } from "react";
+import { useUser } from "@auth0/nextjs-auth0/client";
+
+const ProfileClient = () => {
+  const { user, error, isLoading } = useUser();
+  const [profileData, setProfileData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Assuming user is an async data fetching function
+        // This might not be needed if useUser already handles it
+        if (user) {
+          setProfileData(user);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
+  }, [user]);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+
+  return profileData ? (
     <div>
-      <img src={user.picture} alt={user.name} />
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
+      <h1>Profile</h1>
+      <img src={profileData.picture} alt={profileData.name} />
+      <h2>{profileData.name}</h2>
+      <p>{profileData.email}</p>
     </div>
   ) : (
     <div>
@@ -20,4 +41,4 @@ const ProfileServer = () => {
   );
 };
 
-export default ProfileServer;
+export default ProfileClient;
