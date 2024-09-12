@@ -9,8 +9,7 @@ const ProfileClient = () => {
   if (error) return <div>{error.message}</div>;
 
   return user ? (
-    <div>
-      <h1>Profile</h1>
+    <div className="ml-10">
       <img src={user.picture} alt={user.name} />
       <h2>{user.name}</h2>
       <p>{user.email}</p>

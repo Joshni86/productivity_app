@@ -39,8 +39,14 @@ export default function Homepage() {
       {user && (
         <div className="m-8">
           <a
-            href="/api/auth/logout"
+            href="./timer"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Timer
+          </a>
+          <a
+            href="/api/auth/logout"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-5"
           >
             Logout
           </a>

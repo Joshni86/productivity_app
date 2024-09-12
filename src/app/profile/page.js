@@ -10,8 +10,13 @@ const Profile = async () => {
     redirect("/api/auth/login");
   }
   return (
-    <div>
-      <h1>Profile</h1>
+    <div className="bg-pink-200 w-full min-h-screen">
+      <div>
+        <br />
+        <h1 className="text-black-300 font-bold text-3xl ml-10">Profile</h1>
+        <br />
+        <ProfileClient />
+      </div>
     </div>
   );
 };
