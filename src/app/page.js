@@ -11,9 +11,9 @@ export default function Homepage() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <div className="bg-purple-300 min-h-screen flex justify-between">
+    <div className="bg-violet-100 min-h-screen flex justify-between">
       <div>
-        <h1 className="text-center font-bold text-2xl text-gray-700 m-10">
+        <h1 className="font-bold text-2xl text-gray-700 m-10">
           Welcome to the Productivity Website!
         </h1>
         <div className="flex justify-center">
@@ -29,7 +29,7 @@ export default function Homepage() {
         <div className="m-8">
           <a
             href="/api/auth/login"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-violet-800 hover:bg-violet-600 text-white font-mono py-2 px-4 rounded-full"
           >
             Login
           </a>

@@ -82,8 +82,8 @@ export default function Timer() {
   };
 
   return (
-    <div className="flex flex-col items-center h-screen bg-red-100">
-      <h1 className="text-3xl font-bold">Timer -- use Pomodoro</h1>
+    <div className="flex flex-col items-center h-screen bg-red-100 w-full">
+      <h1 className="text-3xl font-bold mt-5">Timer -- use Pomodoro</h1>
       <div className="flex flex-col items-center mb-6">
         <Input
           type="number"
