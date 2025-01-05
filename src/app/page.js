@@ -5,53 +5,27 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
 
 export default function Homepage() {
-  const { user, error, isLoading } = useUser();
+  const { error, isLoading } = useUser();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
   return (
-    <div className="bg-violet-100 min-h-screen flex justify-between">
+    <div className="bg-gray-400 min-h-screen p-10">
       <div>
-        <h1 className="font-bold text-2xl text-gray-700 m-10">
+        <h1 className="font-bold text-4xl text-black text-center p-10 font-mono animate-typing">
           Welcome to the Productivity Website!
         </h1>
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center">
           <Image
             src="/image/pro.png"
             alt="Productivity"
             width={400}
             height={400}
+            className="my-5"
           />
         </div>
       </div>
-      {!user && (
-        <div className="m-8">
-          <a
-            href="/api/auth/login"
-            className="bg-violet-800 hover:bg-violet-600 text-white font-mono py-2 px-4 rounded-full"
-          >
-            Login
-          </a>
-        </div>
-      )}
-
-      {user && (
-        <div className="m-8">
-          <a
-            href="./timer"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Timer
-          </a>
-          <a
-            href="/api/auth/logout"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded m-5"
-          >
-            Logout
-          </a>
-        </div>
-      )}
     </div>
   );
 }
