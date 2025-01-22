@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
+import Image from "next/image";
 
 export default function Timer() {
   const [time, setTime] = useState(""); // time in minutes as a string initially
@@ -82,49 +83,51 @@ export default function Timer() {
   };
 
   return (
-    <div className="flex flex-col items-center h-screen bg-red-100 w-full">
-      <h1 className="text-3xl font-bold mt-5">Timer -- use Pomodoro</h1>
-      <div className="flex flex-col items-center mb-6">
-        <Input
-          type="number"
-          value={time}
-          onChange={handleDurationChange}
-          placeholder="Enter time in minutes"
-          className="p-2 my-4"
-        />
-        <Button
-          onClick={handleSetDuration}
-          variant="outline"
-          className="w-1/4 p-2 my-4 text-gray-800 dark:text-gray-200"
-        >
-          Set
-        </Button>
-        <div className="text-6xl font-bold text-gray-800 mb-4">
+    <div
+      className="flex h-screen "
+      style={{
+        backgroundImage: "url('/image/bg.jpeg')",
+        backgroundSize: "cover",
+      }}
+    >
+      <div className="bg-black rounded-3xl m-10 h-fit">
+        <div className="text-6xl font-bold text-white m-4 p-2">
           {formatTime(timeLeft)}
+          <Input
+            type="number"
+            value={time}
+            onChange={handleDurationChange}
+            onBlur={handleSetDuration}
+            placeholder="Enter time in minutes"
+            className="p-2 my-4 text-white"
+          />
+          <div className="flex justify-center gap-4">
+            <Button
+              onClick={handleStart}
+              variant="outline"
+              className="w-1/4 p-2 my-4"
+            >
+              {isPaused ? "Resume" : "Start"}
+            </Button>
+            <Button
+              onClick={handlePause}
+              variant="outline"
+              className="w-1/4 p-2 my-4"
+            >
+              Pause
+            </Button>
+            <Button
+              onClick={handleReset}
+              variant="outline"
+              className="w-1/4 p-2 my-4"
+            >
+              Reset
+            </Button>
+          </div>
         </div>
-        <div className="flex justify-center gap-4">
-          <Button
-            onClick={handleStart}
-            variant="outline"
-            className="w-1/4 p-2 my-4"
-          >
-            {isPaused ? "Resume" : "Start"}
-          </Button>
-          <Button
-            onClick={handlePause}
-            variant="outline"
-            className="w-1/4 p-2 my-4"
-          >
-            Pause
-          </Button>
-          <Button
-            onClick={handleReset}
-            variant="outline"
-            className="w-1/4 p-2 my-4"
-          >
-            Reset
-          </Button>
-        </div>
+      </div>
+      <div className="text-white text-6xl text-bold font-mono text-center  my-52 mx-52">
+        Just Do It
       </div>
     </div>
   );
